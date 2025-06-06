@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+#define N 7
+
+int main() {
+    int triangulo_pascal[N][N];
+
+    int i, j;
+
+    for (i = 0; i < N; i++) { 
+        for (j = 0; j <= i; j++) { 
+                
+            if (j == 0 || j == i) {
+                triangulo_pascal[i][j] = 1;
+            } else {
+                triangulo_pascal[i][j] = triangulo_pascal[i-1][j-1] + triangulo_pascal[i-1][j];
+            }
+        }
+    }
+    printf("Triangulo de Pascal (%d linhas):\n", N);
+    for (i = 0; i < N; i++) { 
+    
+        /*
+        for (int space = 0; space < (N - 1 - i) * 2; space++) {
+            printf(" ");
+        }
+        */
+
+        for (j = 0; j <= i; j++) { 
+            printf("%4d", triangulo_pascal[i][j]); 
+        }
+        printf("\n");
+    }
+
+    return 0; 
+}
